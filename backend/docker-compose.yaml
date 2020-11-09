@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  strapiexample:
+  strapi:
     image: strapi/strapi
     container_name: ${PROJECT_NAME}_strapi
     restart: unless-stopped
@@ -22,7 +22,7 @@ services:
     ports:
       - "1337:1337"
 
-  mongoexample:
+  mongo:
     image: mongo
     container_name: ${PROJECT_NAME}_mongo
     restart: unless-stopped
@@ -34,6 +34,7 @@ services:
       - strapi-app-network
     volumes:
       - strapidata:/data/db
+      - ./db-data:/data/db
     ports:
       - "27017:27017"
 
